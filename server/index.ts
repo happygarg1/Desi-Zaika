@@ -38,10 +38,15 @@ app.use("/api/v1/restaurant", restaurantRoute);
 app.use("/api/v1/menu", menuRoute);
 app.use("/api/v1/order", orderRoute);
 
-// app.use(express.static(path.join(DIRNAME,"/client/dist")));
-// app.use("*",(_,res)=>{
-//     res.sendFile(path.resolve(DIRNAME,"client","dist","index.html"));
-// })
+// Serve static files from Vite build (client/dist) in production
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(DIRNAME, "client", "dist")));
+
+    app.get("*", (_, res) => {
+        res.sendFile(path.resolve(DIRNAME, "client", "dist", "index.html"));
+    });
+}
+
 
 // Server start and DB connection
 // console.log(process.env.STRIPE_SECRET_KEY);
