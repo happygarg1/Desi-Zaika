@@ -50,7 +50,12 @@ if (process.env.NODE_ENV === "production") {
 
 // Server start and DB connection
 // console.log(process.env.STRIPE_SECRET_KEY);
-app.listen(PORT, () => {
-    connectDb();
-    console.log(`Server listening at port ${PORT}`);
-});
+connectDb()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server listening at port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("DB connection failed", error);
+  });
