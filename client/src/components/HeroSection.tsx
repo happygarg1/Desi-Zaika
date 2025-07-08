@@ -7,21 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const [searchtext, setsearchtext] = useState<string>("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div className="relative w-full h-screen flex items-center justify-center text-white">
       {/* Background Video */}
-      <video 
-        src={heroimage} 
-        autoPlay 
-        loop 
-        muted 
+      <video
+        src={heroimage}
+        autoPlay
+        loop
+        muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
-      ></video>
+      />
 
-      {/* Overlay (Optional for better readability) */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+      {/* Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50" />
 
       {/* Foreground Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 text-center">
@@ -38,53 +39,20 @@ const HeroSection = () => {
           <Input
             type="text"
             value={searchtext}
-            placeholder="Search restaurant by name,city & country"
+            placeholder="Search restaurant by name, city & country"
             onChange={(e) => setsearchtext(e.target.value)}
             className="pl-10 pr-4 py-2 w-full shadow-lg rounded-md text-black dark:text-white"
           />
-          <Button onClick={()=>navigate(`/search/${searchtext}`)} className="border bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-md dark:bg-slate-200">Search</Button>
+          <Button
+            onClick={() => navigate(`/search/${searchtext}`)}
+            className="border bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-md dark:bg-slate-200"
+          >
+            Search
+          </Button>
         </div>
       </div>
-    </div>                                                                  
+    </div>
   );
 };
 
 export default HeroSection;
-
-
-
-
-
-
-// import { useState } from "react"
-// import { Input } from "./ui/input"
-// import { Search } from "lucide-react"
-// import { Button } from "./ui/button"
-// import heroimage from "@/assets/vid.mp4?url";
-// const HeroSection = () => {
-//     const [searchtext,setsearchtext]=useState<string>("")
-//   return (
-//     <div className='flex flex-col md:flex-row max-w-7xl mx-automd:p-10 rounded-lg items-center justify-center m-4 gap-20'>
-//         <div className='flex flex-col gap-10 md:w-[40%]'>
-//             <div className='flex flex-col gap-5'>
-                
-//                 <h1 className="font-bold md:font-extrabold md:text-5xl text-4xl">Order Food anytime & anywhere</h1>
-//                 <p>Welcome to DesiZaika Where every bite feels like home. Taste the finest flavors in town and experience a dining journey like never before!</p>
-//             </div>
-//             <div className="relative flex items-center gap-2">
-                
-//                 <Input type="text" value={searchtext} onChange={(e)=>setsearchtext(e.target.value)}
-//                 className="pl-10 shadow-lg"/>
-//                 <Search className="text-gray-500 absolute inset-y-2 left-2"/>
-                
-//                 <Button className="bg-orange hover:bg-hoverOrange">Search</Button>
-//             </div>
-//         </div>
-//         <div>
-//         <video src={heroimage} autoPlay loop muted playsInline className="w-full max-h-[500px] "></video>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default HeroSection

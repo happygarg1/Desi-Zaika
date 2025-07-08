@@ -58,7 +58,7 @@ const userSchema=new mongoose.Schema<IUserDocument>({
     },
     admin:{
         type:Boolean,
-        default:false
+        default:false,
     },
     lastLogin:{
         type:Date,
