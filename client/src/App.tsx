@@ -18,7 +18,7 @@ import { useUserStore } from './store/useUserStore'
 import { useEffect } from 'react'
 import Loading from './components/Loading'
 import { useThemeStore } from './store/useThemeStore'
-import './App.css'
+// import './App.css'
 
 const ProtectedRoutes=({children}:{children:React.ReactNode})=>{
   const {isAuthenticated,user}=useUserStore();
