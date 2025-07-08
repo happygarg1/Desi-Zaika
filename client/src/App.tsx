@@ -18,7 +18,7 @@ import { useUserStore } from './store/useUserStore'
 import { useEffect } from 'react'
 import Loading from './components/Loading'
 import { useThemeStore } from './store/useThemeStore'
-import './index.css'
+import './App.css'
 
 const ProtectedRoutes=({children}:{children:React.ReactNode})=>{
   const {isAuthenticated,user}=useUserStore();
@@ -117,6 +117,7 @@ const appRouter=createBrowserRouter([
     element:<VerifyEmail/>
   },
 ])
+
 function App() {
   const initializeTheme=useThemeStore((state:any)=>state.initializeTheme);
   const {checkAuthentication,isCheckingAuth}=useUserStore();
