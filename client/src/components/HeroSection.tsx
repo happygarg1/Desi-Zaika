@@ -3,7 +3,7 @@ import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 // import heroimage from "@/assets/vid.mp4?url";
-import {burger} from "@/assets/burger.png"
+import burger from "@/assets/burger.png"
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
