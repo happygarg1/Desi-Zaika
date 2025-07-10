@@ -1,13 +1,29 @@
-import  express  from "express";
+import express from "express";
 import upload from "../middlewares/multer";
 import { isAuthenticated } from "../middlewares/isAuthenticated";
-import { asyncHandler } from "../utils/asyncHandler"; // 👈 your helper
+import { asyncHandler } from "../utils/asyncHandler";
 import { addMenu, editMenu } from "../controller/menu.controller";
 
-const router=express.Router();
+const router = express.Router();
 
-router.route("/").post(isAuthenticated,upload.single("image"),asyncHandler(addMenu));
-router.route("/:id").put(isAuthenticated,upload.single("image"),asyncHandler(editMenu));
+// POST /api/v1/menu
+router.post("/", 
+  isAuthenticated, 
+  upload.single("image"), 
+  asyncHandler(addMenu)
+);
 
+// PUT /api/v1/menu/:id
+router.put("/:id", 
+  isAuthenticated, 
+  asyncHandler(editMenu)
+);
+
+// New endpoint specifically for image uploads
+router.put("/:id/image", 
+  isAuthenticated, 
+  upload.single("image"), 
+  asyncHandler(editMenu)
+);
 
 export default router;

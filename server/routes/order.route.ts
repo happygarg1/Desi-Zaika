@@ -4,8 +4,8 @@ import { createCheckoutSession, getOrders, stripeWebhook } from "../controller/o
 import { asyncHandler } from "../utils/asyncHandler";
 
 const router=express.Router();
-router.route("/").get(isAuthenticated,asyncHandler(getOrders));
-router.route("/checkout/create-checkout-session").post(isAuthenticated,asyncHandler(createCheckoutSession));
-router.route("/webhook").post(express.raw({type:'application/json'}),stripeWebhook);
+router.get("/",isAuthenticated,asyncHandler(getOrders));
+router.post("/checkout/create-checkout-session",isAuthenticated,asyncHandler(createCheckoutSession));
+router.post("/webhook",express.raw({type:'application/json'}),stripeWebhook);
 
 export default router;

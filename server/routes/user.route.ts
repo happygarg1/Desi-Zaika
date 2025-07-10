@@ -10,17 +10,22 @@ import {
   verifyEmail,
 } from "../controller/user.controller";
 import { isAuthenticated } from "../middlewares/isAuthenticated";
-import { asyncHandler } from "../utils/asyncHandler"; // 👈 your helper
+import { asyncHandler } from "../utils/asyncHandler";
 
 const router = express.Router();
 
-router.route("/check-auth").get(isAuthenticated, asyncHandler(checkAuth));
-router.route("/signup").post(asyncHandler(signup));
-router.route("/login").post(asyncHandler(login));
-router.route("/logout").post(asyncHandler(logout));
-router.route("/verify-email").post(asyncHandler(verifyEmail));
-router.route("/forgot-password").post(asyncHandler(forgotpassword));
-router.route("/reset-password/:token").post(asyncHandler(resetPassword));
-router.route("/profile/update").put(isAuthenticated, asyncHandler(updateProfile));
+// Authentication routes
+router.post("/signup", asyncHandler(signup));
+router.post("/login", asyncHandler(login));
+router.post("/logout", asyncHandler(logout));
+
+// Email verification/password reset
+router.post("/verify-email", asyncHandler(verifyEmail));
+router.post("/forgot-password", asyncHandler(forgotpassword));
+router.post("/reset-password/:token", asyncHandler(resetPassword));
+
+// Protected routes
+router.get("/check-auth", isAuthenticated, asyncHandler(checkAuth));
+router.put("/profile/update", isAuthenticated, asyncHandler(updateProfile));
 
 export default router;

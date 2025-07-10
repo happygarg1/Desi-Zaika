@@ -15,7 +15,9 @@ import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+// Add this right after your middleware setup
+app.disable('strict routing');
+app.set('strict routing', false);
 const DIRNAME=path.resolve();
 
 // Middleware
@@ -39,13 +41,13 @@ app.use("/api/v1/menu", menuRoute);
 app.use("/api/v1/order", orderRoute);
 
 // Serve static files from Vite build (client/dist) in production
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(DIRNAME, "client", "dist")));
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(DIRNAME, "client", "dist")));
 
-    app.get("*", (_, res) => {
-        res.sendFile(path.resolve(DIRNAME, "client", "dist", "index.html"));
-    });
-}
+//     app.get("*", (_, res) => {
+//         res.sendFile(path.resolve(DIRNAME, "client", "dist", "index.html"));
+//     });
+// }
 
 
 // Server start and DB connection
