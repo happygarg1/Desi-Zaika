@@ -13,12 +13,8 @@ const HeroSection = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center text-white">
       {/* Background Video */}
-      <video
+      <img
         src={burger}
-        autoPlay
-        loop
-        muted
-        playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
 

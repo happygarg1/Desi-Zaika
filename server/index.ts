@@ -12,7 +12,6 @@ import orderRoute from "./routes/order.route";
 import cors from "cors";
 import path from "path";
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 // Add this right after your middleware setup
@@ -25,7 +24,6 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json());
 app.use(cookieParser());
-
 // CORS configuration
 const corsOptions = {
     origin: 'https://desi-zaika.onrender.com',  // Remove trailing slash
@@ -49,8 +47,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 }
-
-
 // Server start and DB connection
 // console.log(process.env.STRIPE_SECRET_KEY);
 connectDb()
