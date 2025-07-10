@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
-import heroimage from "@/assets/vid.mp4?url";
+// import heroimage from "@/assets/vid.mp4?url";
+import {burger} from "@/assets/burger.png"
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
@@ -13,7 +14,7 @@ const HeroSection = () => {
     <div className="relative w-full h-screen flex items-center justify-center text-white">
       {/* Background Video */}
       <video
-        src={heroimage}
+        src={burger}
         autoPlay
         loop
         muted
