@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:5173',  // Remove trailing slash
+    origin: 'https://desi-zaika.onrender.com',  // Remove trailing slash
     credentials: true,  // Ensure this is needed for your use case
 };
 
@@ -41,13 +41,14 @@ app.use("/api/v1/menu", menuRoute);
 app.use("/api/v1/order", orderRoute);
 
 // Serve static files from Vite build (client/dist) in production
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static(path.join(DIRNAME, "client", "dist")));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/dist")));
 
-//     app.get("*", (_, res) => {
-//         res.sendFile(path.resolve(DIRNAME, "client", "dist", "index.html"));
-//     });
-// }
+// Fallback to index.html for SPA routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+}
 
 
 // Server start and DB connection
