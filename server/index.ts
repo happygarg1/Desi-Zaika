@@ -26,13 +26,16 @@ app.use(express.json());
 app.use(cookieParser());
 // CORS configuration
 const corsOptions = {
-    origin: 'https://desi-zaika.onrender.com',  // Remove trailing slash
+    origin: 'https://localhost:8000',  // Remove trailing slash
     credentials: true,  // Ensure this is needed for your use case
 };
 
 app.use(cors(corsOptions));
 
 // Routes
+app.get("/",(req,res)=>{
+  res.send("server is working");
+})
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/restaurant", restaurantRoute);
 app.use("/api/v1/menu", menuRoute);

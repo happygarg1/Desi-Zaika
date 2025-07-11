@@ -13,6 +13,9 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 import { asyncHandler } from "../utils/asyncHandler";
 
 const router = express.Router();
+router.get('/test', (req, res) => {
+  res.send('User route is working');
+});
 
 // Authentication routes
 router.post("/signup", asyncHandler(signup));
